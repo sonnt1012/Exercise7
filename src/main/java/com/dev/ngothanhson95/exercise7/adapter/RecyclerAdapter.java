@@ -1,4 +1,4 @@
-package com.dev.ngothanhson95.exercise7;
+package com.dev.ngothanhson95.exercise7.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,14 +7,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dev.ngothanhson95.exercise7.R;
+import com.dev.ngothanhson95.exercise7.listener.MyItemClickListener;
+import com.dev.ngothanhson95.exercise7.model.Artist;
+import com.dev.ngothanhson95.exercise7.viewholder.RecyclerViewHolder;
+
 import java.util.ArrayList;
 
 
 /**
  * Created by ngothanhson95 on 7/12/16.
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerViewHolder> {
+
     private ArrayList<Artist> artistArrayList = new ArrayList<Artist>();
+    private MyItemClickListener listener;
 
     public RecyclerAdapter(ArrayList<Artist> artistArrayList) {
         this.artistArrayList = artistArrayList;
@@ -23,8 +30,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
-        RecyclerViewHolder recyclerViewHolder = new RecyclerViewHolder(view);
-
+        RecyclerViewHolder recyclerViewHolder = new RecyclerViewHolder(view, listener);
         return recyclerViewHolder;
     }
 
@@ -40,14 +46,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         return artistArrayList.size();
     }
 
-    public static class RecyclerViewHolder extends RecyclerView.ViewHolder{
-
-        ImageView imgArtist;
-        TextView txtArtist;
-        public RecyclerViewHolder(View itemView) {
-            super(itemView);
-            imgArtist = (ImageView) itemView.findViewById(R.id.imgArtist);
-            txtArtist = (TextView) itemView.findViewById(R.id.txtArtist);
-        }
+    public void setOnItemClickListener(MyItemClickListener listener){
+        this.listener = listener;
     }
 }
