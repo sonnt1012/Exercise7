@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
+                android:layout_height="200dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="150dp"
@@ -14,13 +18,13 @@
         android:id="@+id/txtArtist"
         android:gravity="center_vertical"
         android:text="Taylor Swift"
-        android:textSize="16dp"
+        android:textSize="14dp"
         android:layout_below="@+id/imgArtist"/>
     <Button
-        android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:background="@drawable/menu"
         android:layout_below="@+id/imgArtist"
         android:layout_toRightOf="@+id/txtArtist"/>
-
-</RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
