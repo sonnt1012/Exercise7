@@ -29,8 +29,7 @@ public class AlbumAdapter extends RecyclerView.Adapter <AlbumViewHolder>{
 
     @Override
     public void onBindViewHolder(AlbumViewHolder holder, int position) {
-        holder.txtAlbum.setText(albumArrayList.get(position).getTitle());
-        holder.txtAuthor.setText(albumArrayList.get(position).getArtist());
+        holder.setupWith(albumArrayList.get(position));
     }
 
     @Override

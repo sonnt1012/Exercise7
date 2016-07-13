@@ -35,8 +35,7 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistViewHolder> {
     @Override
     public void onBindViewHolder(ArtistViewHolder holder, int position) {
         Artist artist = artistArrayList.get(position);
-        holder.imgArtist.setImageResource(artist.getImgRes());
-        holder.txtArtist.setText(artist.getName());
+        holder.setupWith(artist);
     }
 
     @Override

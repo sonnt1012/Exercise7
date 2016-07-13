@@ -1,53 +1,60 @@
 package com.dev.ngothanhson95.exercise7.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
-import com.dev.ngothanhson95.exercise7.listener.MyItemClickListener;
-import com.dev.ngothanhson95.exercise7.model.Artist;
+import com.dev.ngothanhson95.exercise7.Constant;
 import com.dev.ngothanhson95.exercise7.R;
 import com.dev.ngothanhson95.exercise7.adapter.ArtistAdapter;
+import com.dev.ngothanhson95.exercise7.listener.MyItemClickListener;
+import com.dev.ngothanhson95.exercise7.model.Artist;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements MyItemClickListener{
-    RecyclerView recyclerView;
+    @Bind(R.id.rvArtist) RecyclerView recyclerView;
+
     ArtistAdapter adapter;
-    RecyclerView.LayoutManager layoutManager;
     String[] artistNames;
     String[] artistLink;
-    int[] imgRes = {R.drawable.taylor, R.drawable.avril, R.drawable.ade, R.drawable.se};
-    ArrayList<Artist> arrayList = new ArrayList<Artist>();
+    int[] imgRes;
+    ArrayList<Artist> arrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.rvArtist);
+        ButterKnife.bind(this);
+        initData();
+        initView();
+    }
+
+    private void initData(){
         artistNames = getResources().getStringArray(R.array.artist_name);
         artistLink = getResources().getStringArray(R.array.artist_link);
-
+        imgRes = new int[] {R.drawable.taylor, R.drawable.avril, R.drawable.ade, R.drawable.se};
         int i =0;
         for(String name : artistNames){
             Artist artist = new Artist(imgRes[i], name, artistLink[i]);
             arrayList.add(artist);
             i++;
         }
+    }
 
+    private void initView(){
         adapter = new ArtistAdapter(arrayList);
-        recyclerView.setHasFixedSize(true);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         this.adapter.setOnItemClickListener(this);
     }
-
 
     @Override
     public void onItemClick(View view, int positon) {
@@ -55,10 +62,9 @@ public class MainActivity extends AppCompatActivity implements MyItemClickListen
         if(artist!=null){
            Intent intent = new Intent(MainActivity.this, AlbumActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putInt("imgRes", artist.getImgRes());
-            bundle.putString("url", artist.getUrl());
-
-            intent.putExtra("Artist", bundle);
+            bundle.putInt(Constant.imgKey, artist.getImgRes());
+            bundle.putString(Constant.urlKey, artist.getUrl());
+            intent.putExtra(Constant.bundleKey, bundle);
             startActivity(intent);
         }
     }
