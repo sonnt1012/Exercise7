@@ -11,12 +11,12 @@ import com.dev.ngothanhson95.exercise7.listener.MyItemClickListener;
 /**
  * Created by ngothanhson95 on 7/12/16.
  */
-public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ArtistViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public ImageView imgArtist;
     public TextView txtArtist;
     private MyItemClickListener itemClickListener;
 
-    public RecyclerViewHolder(View itemView, MyItemClickListener itemClickListener) {
+    public ArtistViewHolder(View itemView, MyItemClickListener itemClickListener) {
         super(itemView);
         imgArtist = (ImageView) itemView.findViewById(R.id.imgArtist);
         txtArtist = (TextView) itemView.findViewById(R.id.txtArtist);

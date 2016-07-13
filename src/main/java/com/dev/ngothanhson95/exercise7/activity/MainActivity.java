@@ -7,18 +7,17 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 import com.dev.ngothanhson95.exercise7.listener.MyItemClickListener;
 import com.dev.ngothanhson95.exercise7.model.Artist;
 import com.dev.ngothanhson95.exercise7.R;
-import com.dev.ngothanhson95.exercise7.adapter.RecyclerAdapter;
+import com.dev.ngothanhson95.exercise7.adapter.ArtistAdapter;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements MyItemClickListener{
     RecyclerView recyclerView;
-    RecyclerAdapter adapter;
+    ArtistAdapter adapter;
     RecyclerView.LayoutManager layoutManager;
     String[] artistNames;
     String[] artistLink;
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements MyItemClickListen
             i++;
         }
 
-        adapter = new RecyclerAdapter(arrayList);
+        adapter = new ArtistAdapter(arrayList);
         recyclerView.setHasFixedSize(true);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
@@ -55,7 +54,11 @@ public class MainActivity extends AppCompatActivity implements MyItemClickListen
         Artist artist = arrayList.get(positon);
         if(artist!=null){
            Intent intent = new Intent(MainActivity.this, AlbumActivity.class);
-            intent.putExtra("artistLink", artist.getUrl());
+            Bundle bundle = new Bundle();
+            bundle.putInt("imgRes", artist.getImgRes());
+            bundle.putString("url", artist.getUrl());
+
+            intent.putExtra("Artist", bundle);
             startActivity(intent);
         }
     }

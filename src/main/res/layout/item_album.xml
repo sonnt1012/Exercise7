@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="5dp">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/taylor"
+            android:id="@+id/imgAlbum"
+            android:layout_margin="4dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:textSize="16dp"
+            android:text="You belong with me"
+            android:id="@+id/txtTilte"
+            android:layout_toRightOf="@+id/imgAlbum"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:paddingLeft="8dp"
+            android:textColor="@android:color/darker_gray"
+            android:id="@+id/txtAuthor"
+            android:text="Taylor Swift"
+            android:layout_toRightOf="@+id/imgAlbum"
+            android:layout_below="@id/txtTilte"/>
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/menu"
+            android:layout_alignParentRight="true"
+            android:id="@+id/btnMenuAlbum"/>
+</RelativeLayout>

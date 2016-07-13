@@ -7,9 +7,9 @@
         <item>"Selena Gomez"</item>
     </string-array>
     <string-array name="artist_link">
-        <item>https://api.discogs.com/artists/1124645/releases</item>
-        <item>https://api.discogs.com/artists/125992/releases</item>
-        <item>https://api.discogs.com/artists/819015/releases</item>
-        <item>https://api.discogs.com/artists/1642600/releases</item>
+        <item>"1124645/releases</item>
+        <item>"125992/releases"</item>
+        <item>"819015/releases"</item>
+        <item>"1642600/releases""</item>
     </string-array>
 </resources>
