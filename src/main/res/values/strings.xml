@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Exercise7</string>
+    <string-array name="artist_name">
+        <item>"Taylor Swift</item>
+        <item>""Avril Lavigne"</item>
+        <item>""Adele</item>
+        <item>"Selena Gomez"</item>
+    </string-array>
+    <string-array name="artist_link">
+        <item>"1124645/releases</item>
+        <item>"125992/releases"</item>
+        <item>"819015/releases"</item>
+        <item>"1642600/releases""</item>
+    </string-array>
 </resources>
